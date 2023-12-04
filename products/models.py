@@ -25,12 +25,14 @@ class Product(models.Model):
     tags = TaggableManager()
     brand = models.ForeignKey('Brand',verbose_name = _('brand') , related_name ='product_brand',on_delete = models.SET_NULL, null= True)
     slug = models.SlugField(blank = True,null = True)
-    
+
     # overriding and save the slug name
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Product,self).save(*args,**kwargs)
    
+    def __str__(self):
+        return self.name
 
 #Creating Product image calss
 class ProductImages(models.Model):
@@ -49,6 +51,8 @@ class Brand(models.Model):
         self.slug = slugify(self.name)
         super(Product,self).save(*args,**kwargs)
 
+    def __str__(self):
+        return self.name
 # Creating a review Class
 class Review(models.Model):
     name = models.ForeignKey(User,verbose_name=_('user') ,related_name ='review_user',on_delete = models.SET_NULL, null=True)
@@ -56,3 +60,6 @@ class Review(models.Model):
     review = models.TextField(_('review') , max_length = 500)
     rate = models.IntegerField(_('rate') , choices = [(i,i) for i in range(1,6)])
     created_at = models.DateTimeField(default = timezone.now)
+
+    def __str__(self):
+        return f"{self.user} - {self.product} - {self.rate}" 
