@@ -7,29 +7,28 @@ from django.utils.translation import gettext_lazy as _
 
 #Flaging drop down menue
 FLAG_TYPES=(
-    ('New', 'New')
-    ('Sale', 'Sale')
-    ('Feature', 'Feature')
+    ('New','New'),
+    ('Sale','Sale'),
+    ('Feature','Feature')
 )
 
 
 #Creating products class 
 class Product(models.Model):
-    name = models.CharField(_('name'), max_length = 120)
-    flag = models.CharField(_('flag'), max_length = 10, choices = FLAG_TYPES)
+    name = models.CharField(_('name'),max_length = 120)
+    flag = models.CharField(_('flag'),max_length = 10, choices = FLAG_TYPES)
     price = models.FloatField(_('price'))
-    images = models.ImageField(_('image'), upload_to='product')
+    images = models.ImageField(_('image'),upload_to ='product')
     sku = models.IntegerField(_('sku'))
-    subtitle = models.TextField(_('subtitle'), max_length=500)
-    discription = models.TextField(_('discription'), max_length=50000)
+    subtitle = models.TextField(_('subtitle'),max_length=500)
+    discription = models.TextField(_('discription'),max_length=50000)
+    brand = models.ForeignKey('Brand',verbose_name = _('brand'),related_name ='product_brand',on_delete = models.SET_NULL,null= True)
     tags = TaggableManager()
-    brand = models.ForeignKey('Brand',verbose_name = _('brand') , related_name ='product_brand',on_delete = models.SET_NULL, null= True)
     slug = models.SlugField(blank = True,null = True)
 
-    # overriding and save the slug name
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super(Product,self).save(*args,**kwargs)
+        super(Product,self).save(*args, **kwargs)
    
     def __str__(self):
         return self.name
@@ -46,19 +45,19 @@ class Brand(models.Model):
     image = models.ImageField(_('image'),upload_to ='brand')
     slug = models.SlugField(blank = True,null = True)
     
-    # overriding and save the slug name
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super(Product,self).save(*args,**kwargs)
+        super(Brand, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
+    
 # Creating a review Class
 class Review(models.Model):
-    name = models.ForeignKey(User,verbose_name=_('user') ,related_name ='review_user',on_delete = models.SET_NULL, null=True)
-    product = models.ForeignKey(Product,verbose_name= _('product'), related_name ='review_product',on_delete = models.CASCADE)
-    review = models.TextField(_('review') , max_length = 500)
-    rate = models.IntegerField(_('rate') , choices = [(i,i) for i in range(1,6)])
+    name = models.ForeignKey(User,verbose_name=_('user'),related_name ='review_user',on_delete = models.SET_NULL,null=True)
+    product = models.ForeignKey(Product,verbose_name = _('product'),related_name ='review_product',on_delete = models.CASCADE)
+    review = models.TextField(_('review'),max_length = 500)
+    rate = models.IntegerField(_('rate'),choices = [(i,i) for i in range(1,6)])
     created_at = models.DateTimeField(default = timezone.now)
 
     def __str__(self):
