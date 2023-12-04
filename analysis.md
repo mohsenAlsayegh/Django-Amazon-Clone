@@ -18,7 +18,6 @@ Products:
         -Images
         -Subtitle
         -Tags
-        -Releated 
         -discription
 
     Functions: ---> views
