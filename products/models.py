@@ -33,10 +33,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-#Creating Product image calss
+#Creating Product image class
 class ProductImages(models.Model):
-    product = models.ForeignKey(Product,verbose_name = _('product'),related_name ='product_image',on_delete=models.CASCADE)
-    image = models.ImageField(_('image'), upload_to ='brand')
+    product = models.ForeignKey(Product,verbose_name = 'product',related_name ='product_image',on_delete=models.CASCADE)
+    image = models.ImageField(_('image'), upload_to ='product_images')
 
 
 #Creating Brand class 
