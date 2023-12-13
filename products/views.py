@@ -22,3 +22,8 @@ class  ProductDetail(DetailView):
         return context
     
 
+class BrandList(ListView):
+    model = Brand
+
+class BrandDetail(DetailView):
+    pass
