@@ -36,13 +36,13 @@ class Product(models.Model):
 #Creating Product image class
 class ProductImages(models.Model):
     product = models.ForeignKey(Product,verbose_name = 'product',related_name ='product_image',on_delete=models.CASCADE)
-    image = models.ImageField(_('image'), upload_to ='product_images')
+    images = models.ImageField(_('image'), upload_to ='product_images')
 
 
 #Creating Brand class 
 class Brand(models.Model):
     name = models.CharField(_('name'),max_length =100)
-    image = models.ImageField(_('image'),upload_to ='brand')
+    images = models.ImageField(_('image'),upload_to ='brand')
     slug = models.SlugField(blank = True,null = True)
     
     def save(self, *args, **kwargs):
@@ -61,4 +61,4 @@ class Review(models.Model):
     created_at = models.DateTimeField(default = timezone.now)
 
     def __str__(self):
-        return f"{self.user} - {self.product} - {self.rate}" 
+        return f"{self.name} - {self.product} - {self.rate}" 
