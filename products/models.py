@@ -36,7 +36,7 @@ class Product(models.Model):
 #Creating Product image class
 class ProductImages(models.Model):
     product = models.ForeignKey(Product,verbose_name = 'product',related_name ='product_image',on_delete=models.CASCADE)
-    images = models.ImageField(_('image'), upload_to ='product_images')
+    images = models.ImageField(_('image'), upload_to ='productimages')
 
 
 #Creating Brand class 
