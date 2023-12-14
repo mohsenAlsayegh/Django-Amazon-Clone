@@ -40,14 +40,14 @@
                             </div>
                             <ul class="details-preview"> 
                                 {% for image in images %}
-                                    <li><img src="{{image.images}}" alt="product"></li> 
+                                    <li><img src="{{image.image.url}}" alt="product"></li>
                                 {% endfor %}
+
                             </ul>
                             <ul class="details-thumb">
                                 {% for image in images %}
-                                    <li><img src="{{image.images}}" alt="product"></li> 
+                                    <li><img src="{{image.image.url}}" alt="product"></li>
                                 {% endfor %}
-                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-6">

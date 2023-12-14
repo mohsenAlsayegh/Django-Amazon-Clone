@@ -8,5 +8,4 @@ urlpatterns = [
     path('brands/<slug:slug>' , BrandDetail.as_view()),
     path('' , ProductList.as_view()),
     path('<slug:slug>' , ProductDetail.as_view()),
-   
 ]

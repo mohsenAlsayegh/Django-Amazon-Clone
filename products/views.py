@@ -7,23 +7,27 @@ from .models import Product,Brand,Review,ProductImages
 
 class  ProductList(ListView):
     model =  Product
+    paginate_by = 50
+    
+    
 
- # context{}, query set : Product.object.all():1 : option 2: method :overide
+ # context{}, query set : Product.object.all():1 : option 2: method :override
  # query set : main query  : detail
  # context : extra data    : reviews, images 
 class  ProductDetail(DetailView): 
     model =  Product 
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs) #dictionary : object product
-        context["reviews"] = Review.objects.filter(product = self.get_object())
-        context["images"] = ProductImages.objects.filter(product = self.get_object())
-        context["related"] = Product.objects.filter(brand = self.get_object().brand) 
+    def get_context_data(self, **kwargs) :
+        context = super().get_context_data(**kwargs) # dict : object one prouduct
+        context["reviews"] = Review.objects.filter(product=self.get_object()) # make filter and give review for one product
+        context['images']= ProductImages.objects.filter(product=self.get_object()) # make filter and give imge for one product
+        context['related']=Product.objects.filter(brand=self.get_object().brand) # make filter and give brand
         return context
     
 
 class BrandList(ListView):
     model = Brand
+    paginate_by = 50
     
     
     
