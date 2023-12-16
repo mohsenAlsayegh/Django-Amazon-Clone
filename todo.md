@@ -1,8 +1,5 @@
 Products :
-    - list & detail products
-    - list, detail brands
-    - Reviews
-    - pagnations
+    -Add review
     - API products
 
 Orders :
