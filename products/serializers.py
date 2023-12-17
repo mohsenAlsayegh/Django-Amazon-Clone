@@ -17,10 +17,10 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 class BrandListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        feilds = '__all__'
+        fields = '__all__'
         
 
 class BrandDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        feilds = '__all__'
+        fields = '__all__'
