@@ -38,11 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # Packages
     "taggit",
-    'products',
+    'rest_framework',
     
+    # Apps
+    'products',
 
 ]
+# RESTAPI
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
