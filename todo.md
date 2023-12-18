@@ -1,6 +1,6 @@
 Products :
     -Add review
-    - API products
+    - custom filter, code refactoring
 
 Orders :
     - design models
