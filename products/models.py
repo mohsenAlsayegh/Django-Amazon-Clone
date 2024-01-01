@@ -33,6 +33,13 @@ class Product(models.Model):
    
     def __str__(self):
         return self.name
+    
+    def mahmoud(self):
+        pass
+    class Meta: #any query
+        odering = ['-id']
+        verbose_name = 'product'
+        verbose_name_plural= 'products'
 
 #Creating Product image class
 class ProductImages(models.Model):
