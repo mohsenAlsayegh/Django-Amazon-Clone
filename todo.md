@@ -1,6 +1,6 @@
 Products :
-    -Add review
-    - custom filter, code refactoring
+    - Home page
+    - Add review
 
 Orders :
     - design models
