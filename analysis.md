@@ -47,3 +47,18 @@ Users:
             - Dashboard
             - Profile
             - Edit profile
+_____________________________
+
+    App Orders:
+    -address
+    -product
+    -brand
+    -qunatity
+    -price
+    -order_time
+    -delivery_time
+    -order_id
+    - total_item
+    -discount
+    -delivery fee
+    -status =['Recieved', 'Processed', 'Shipped']
