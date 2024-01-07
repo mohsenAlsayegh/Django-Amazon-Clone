@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.views.generic import ListView,DetailView
 
@@ -100,7 +100,6 @@ class  ProductList(ListView):
     paginate_by = 50
     
     
-
  # context{}, query set : Product.object.all():1 : option 2: method :override
  # query set : main query  : detail
  # context : extra data    : reviews, images 
@@ -137,5 +136,19 @@ class BrandDetail(ListView):
         return context
     
 
+def add_reveiw(request,slug):
+    product = Product.objects.get(slug=slug)
     
+    review = request.POST['review']
+    rate = request.POST['rating']   #request.POST['rating']  if template method is GET request.GET['rating'] or GET request.POST.get['rating']  from list to function
+    # add review
     
+    Review.objects.create(
+        user = request.user,
+        product = product,
+        review = review,
+        rate = rate
+    )
+    return redirect(f'/products/{slug}')
+    
+    # return product_detail
