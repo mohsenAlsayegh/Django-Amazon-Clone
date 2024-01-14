@@ -22,7 +22,7 @@ class Order(models.Model):
     delivery_time = models.DateTimeField(blank=True, null=True)
     delivery_address = models.ForeignKey(Address, related_name='delivery_address', on_delete=models.SET_NULL, null=True,blank = True)
     coupon = models.ForeignKey('Coupon', related_name='order_coupon', on_delete=models.SET_NULL, null=True,blank = True)
-    total = models.FloatField(null = True,blank = True)
+    total = models.FloatField()
     total_with_coupon = models.FloatField(null=True,blank = True)
     
 
