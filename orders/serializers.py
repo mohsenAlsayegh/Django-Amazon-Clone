@@ -1,7 +1,19 @@
 from rest_framework import serializers
 from .models import Order, OrderDetail, Cart, CartDetail
 
-        
+
+class CarDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartDetail
+        fields = '__all__'
+    
+
+class CartSerializer(serializers.ModelSerializer):
+    cart_detail = CarDetailSerializer(many=True)
+    class Meta:
+        model = Cart
+        fields = '__all__'
+   
 class OrderDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderDetail
@@ -15,16 +27,6 @@ class OrderSerializer(serializers.ModelSerializer):
 
         
 
-class CarDetailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CartDetail
-        fields = '__all__'
 
-
-class CartSerializer(serializers.ModelSerializer):
-    cart_detail = CarDetailSerializer(many=True)
-    class Meta:
-        model = Cart
-        fields = '__all__'
 
 
