@@ -22,7 +22,7 @@ class Order(models.Model):
     delivery_time = models.DateTimeField(blank=True, null=True)
     delivery_address = models.ForeignKey(Address, related_name='delivery_address', on_delete=models.SET_NULL, null=True,blank = True)
     coupon = models.ForeignKey('Coupon', related_name='order_coupon', on_delete=models.SET_NULL, null=True,blank = True)
-    total = models.FloatField(null = True,blank = True)
+    total = models.FloatField(null=True,blank = True)
     total_with_coupon = models.FloatField(null=True,blank = True)
     
 
@@ -31,7 +31,7 @@ class OrderDetail(models.Model):
     product = models.ForeignKey(Product, related_name='orderdetail_product', on_delete=models.SET_NULL, null=True,blank=True)
     qauntity = models.IntegerField()
     price = models.FloatField()
-    total = models.FloatField(null = True,blank = True)
+    total = models.FloatField(null = True, blank = True)
     
 
 
@@ -51,12 +51,13 @@ class Cart(models.Model):
         for item in self.cart_detail.all():
             total += item.total
         return round(total,2)
+    
 
 class CartDetail(models.Model):
     order = models.ForeignKey(Cart, related_name='cart_detail', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='cartdetail_product', on_delete=models.SET_NULL, null=True,blank=True)
     qauntity = models.IntegerField(default=1)
-    total = models.FloatField(null = True,blank = True)
+    total = models.FloatField(null = True, blank = True)
     
 class Coupon(models.Model):
     code = models.CharField(max_length=20)
