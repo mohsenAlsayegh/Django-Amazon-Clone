@@ -1,7 +1,4 @@
-Orders :
-    - add checkout
-    - coupons 
-    - API Orders, Cart
+
 
 Users :
     - DESIGN MODELS
@@ -10,6 +7,7 @@ Users :
 
 Intermediate :
     - Docker
+    -Translation
     - Celery
     - Redis
     - Payment
@@ -17,3 +15,4 @@ Intermediate :
     - Caching
     - Linting
     - Deploy
+    - Django Default Permission
