@@ -166,4 +166,8 @@ CACHES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    'accounts.backend.EmailOrUsernameLogin'
+]
+
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
