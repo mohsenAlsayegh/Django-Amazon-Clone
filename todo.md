@@ -1,3 +1,5 @@
+
+
 Users :
     - DESIGN MODELS
     - ADD TEMPLATES
@@ -6,6 +8,7 @@ Users :
 Intermediate :
     - Docker
     -Translation
+    -Translation
     - Celery
     - Redis
     - Payment
@@ -13,4 +16,5 @@ Intermediate :
     - Caching
     - Linting
     - Deploy
+    - Django Default Permission
     - Django Default Permission
