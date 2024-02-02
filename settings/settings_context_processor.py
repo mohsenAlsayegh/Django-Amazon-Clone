@@ -15,4 +15,4 @@ def get_settings(request):
     #     cache.set('settings_data',settings_data,60*60*24*30)
     
     settings_data = Settings.objects.last()
-    return{'settings_data':settings_data}
+    return {'settings_data':settings_data} 
