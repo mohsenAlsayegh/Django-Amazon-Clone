@@ -6,6 +6,7 @@ import datetime
 from rest_framework import status
 
 
+
 from .serializers import CarDetailSerializer,CartSerializer,OrderDetailSerializer,OrderSerializer
 from .models import Order, OrderDetail, Cart, CartDetail,Coupon
 from products.models import Product
@@ -67,7 +68,7 @@ class CreateOrderAPI(generics.GenericAPIView):
     def post(self,request,*args,**kwargs):
         user =User.objects.get(username=self.kwargs['username'])
         code = request.data['payment_code']
-        address = request.data['address_id']
+        delivery_address = request.data['address_id']
         
         cart = Cart.objects.get(user=user,status='Inprogress')
         cart_detail = CartDetail.objects.filter(order = cart )
@@ -120,7 +121,7 @@ class CartCreatUpdateDelete(generics.GenericAPIView):
         qauntity = int(request.data['quantity'])
         
         cart = Cart.objects.get(user=request.user,status='Inprogress')
-        cart_detail, created = CartDetail.objects.get_or_create(order=cart,product=product)
+        cart_detail, created = CartDetail.objects.get_or_create(cart=cart,product=product)
     
     
         cart_detail.qauntity = qauntity
