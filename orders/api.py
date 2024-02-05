@@ -68,10 +68,10 @@ class CreateOrderAPI(generics.GenericAPIView):
     def post(self,request,*args,**kwargs):
         user =User.objects.get(username=self.kwargs['username'])
         code = request.data['payment_code']
-        delivery_address = request.data['address_id']
+        address = request.data['address_id']
         
         cart = Cart.objects.get(user=user,status='Inprogress')
-        cart_detail = CartDetail.objects.filter(order = cart )
+        cart_detail = CartDetail.objects.filter(cart = cart )
         user_address = Address.objects.get(id=address)
         
         # cart :order | cart_detail :order
@@ -79,7 +79,7 @@ class CreateOrderAPI(generics.GenericAPIView):
             user = user,
             status = 'Received',
             code = code,
-            address = user_address,
+            delivery_address = user_address,
             coupon = cart.coupon,
             total_with_coupon = cart.total_with_coupon,
             total = cart.cart_total
@@ -90,7 +90,7 @@ class CreateOrderAPI(generics.GenericAPIView):
             product = Product.objects.get(id=item.product.id)
             OrderDetail.objects.create(
                 order = new_order,
-                producut = product,
+                product = product,
                 quantity = item.quantity,
                 price = product.price,
                 total = round(item.quantity*product.price,2)
