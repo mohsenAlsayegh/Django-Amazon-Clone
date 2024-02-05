@@ -91,13 +91,13 @@ class CreateOrderAPI(generics.GenericAPIView):
             OrderDetail.objects.create(
                 order = new_order,
                 producut = product,
-                quantity = item.qauntity,
+                quantity = item.quantity,
                 price = product.price,
-                total = round(item.qauntity*product.price,2)
+                total = round(item.quantity*product.price,2)
                 )
             
             # decrease product quantity
-            product.quantity -= item.qauntity
+            product.quantity -= item.quantity
             product.save()
             
         # close the acrt
@@ -118,14 +118,14 @@ class CartCreatUpdateDelete(generics.GenericAPIView):
     def post(self,request,*args, **kwargs): #add or update
         user =User.objects.get(username=self.kwargs['username'])
         product = Product.objects.get(id=request.data['product_id'])
-        qauntity = int(request.data['quantity'])
+        quantity = int(request.data['quantity'])
         
-        cart = Cart.objects.get(user=request.user,status='Inprogress')
+        cart = Cart.objects.get(user=user,status='Inprogress')
         cart_detail, created = CartDetail.objects.get_or_create(cart=cart,product=product)
     
     
-        cart_detail.qauntity = qauntity
-        cart_detail.total =round(product.price * cart_detail.qauntity,2)
+        cart_detail.quantity = quantity
+        cart_detail.total =round(product.price * cart_detail.quantity,2)
         cart_detail.save()
         return Response({'message':'cart was updated succssfully'},status=status.HTTP_201_CREATED)
         

@@ -29,7 +29,7 @@ class Order(models.Model):
 class OrderDetail(models.Model):
     order = models.ForeignKey(Order, related_name='order_detail', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='orderdetail_product', on_delete=models.SET_NULL, null=True,blank=True)
-    qauntity = models.IntegerField()
+    quantity = models.IntegerField()
     price = models.FloatField()
     total = models.FloatField(null = True, blank = True)
     
@@ -54,9 +54,9 @@ class Cart(models.Model):
     
 
 class CartDetail(models.Model):
-    order = models.ForeignKey(Cart, related_name='cart_detail', on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, related_name='cart_detail', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='cartdetail_product', on_delete=models.SET_NULL, null=True,blank=True)
-    qauntity = models.IntegerField(default=1)
+    quantity = models.IntegerField(default=1)
     total = models.FloatField(null = True, blank = True)
     
 class Coupon(models.Model):

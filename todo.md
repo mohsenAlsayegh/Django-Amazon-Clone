@@ -1,14 +1,14 @@
 
 
 Users :
-    - DESIGN MODELS
-    - ADD TEMPLATES
-    - API 
+    -API: library
+
 
 Intermediate :
+    -Translation
     - Docker
-    -Translation
-    -Translation
+    - Translation
+    - Translation
     - Celery
     - Redis
     - Payment

@@ -13,7 +13,7 @@ def order_list(request):
 
 def checkout(request):
     cart = Cart.objects.get(user=request.user,status='Inprogress')
-    cart_detail = CartDetail.objects.filter(order = cart )
+    cart_detail = CartDetail.objects.filter(cart = cart )
     delivery_fee = DeliveryFee.objects.last().fee
     
     if request.method == 'POST':
@@ -60,14 +60,14 @@ def checkout(request):
 
 def add_to_cart(request):
     product = Product.objects.get(id=request.POST['product_id'])
-    qauntity = int(request.POST['quantity'])
+    quantity = int(request.POST['quantity'])
     cart = Cart.objects.get(user=request.user,status='Inprogress')
     cart_detail, created = CartDetail.objects.get_or_create(order=cart,product=product)
     
     # if not created:
     #     cart_detail.quantity =cart_detail.quantity + quantity
     
-    cart_detail.qauntity = qauntity
+    cart_detail.quantity = quantity
     cart_detail.total =round(product.price * cart_detail.qauntity,2)
     cart_detail.save()
     
