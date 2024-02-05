@@ -1,21 +1,22 @@
 {
 	"info": {
-		"_postman_id": "51d5f5ba-bbef-46d6-88b1-a9341713cb03",
-		"name": "Django Store",
+		"_postman_id": "92e486c4-4771-4682-a1f4-bfd07e8f1bea",
+		"name": "Django store",
+		"description": "Djnago Amazon clone",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32744400"
 	},
 	"item": [
 		{
-			"name": "Products ",
+			"name": "Orders",
 			"item": [
 				{
-					"name": "brand list ",
+					"name": "Get or Create Cart",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/products/api/brands",
+							"raw": "http://127.0.0.1:8000/orders/api/admin/cart",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -25,76 +26,32 @@
 							],
 							"port": "8000",
 							"path": [
-								"products",
+								"orders",
 								"api",
-								"brands"
+								"admin",
+								"cart"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "products list",
+					"name": "Cart or Add",
 					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Token a61d12732fee4c1603eb5285ea1cd7e78db09dcb",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/products/api/list?",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"products",
-								"api",
-								"list"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Orders",
-			"item": [
-				{
-					"name": "Get or create cart",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "product_id",
-									"value": "1",
+									"value": "2",
 									"type": "text"
 								},
 								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
+									"key": "quantity",
+									"value": "3",
+									"type": "text"
 								}
 							]
 						},
@@ -119,47 +76,7 @@
 					"response": []
 				},
 				{
-					"name": "Cart update or add",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "product_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "quantity",
-									"value": "2",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/orders/api/admintest/cart",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"orders",
-								"api",
-								"admintest",
-								"cart"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cart detail delete",
+					"name": "Cart Detail Delete ",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -168,13 +85,13 @@
 							"formdata": [
 								{
 									"key": "item_id",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/orders/api/admintest/cart",
+							"raw": "http://127.0.0.1:8000/orders/api/admin/cart",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -186,7 +103,7 @@
 							"path": [
 								"orders",
 								"api",
-								"admintest",
+								"admin",
 								"cart"
 							]
 						}
@@ -199,7 +116,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/orders/api/admintest/2",
+							"raw": "http://127.0.0.1:8000/orders/api/admin/orders",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -211,8 +128,34 @@
 							"path": [
 								"orders",
 								"api",
-								"admintest",
-								"2"
+								"admin",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/orders/api/admin/orders/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"orders",
+								"api",
+								"admin",
+								"orders",
+								"4"
 							]
 						}
 					},
@@ -222,14 +165,7 @@
 					"name": "Apply Coupon",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "coupon_code",
-								"value": "BLACKFRIDAY",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -261,7 +197,7 @@
 					"response": []
 				},
 				{
-					"name": "create order",
+					"name": "Create Order",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -296,6 +232,71 @@
 								"admin",
 								"orders",
 								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Brand List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/products/api/brands",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"api",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a61d12732fee4c1603eb5285ea1cd7e78db09dcb",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/products/api/list?=",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"api",
+								"list"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
 							]
 						}
 					},
