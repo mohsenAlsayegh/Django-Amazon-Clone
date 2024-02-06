@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 
 from django.views.generic import ListView,DetailView
@@ -99,6 +101,14 @@ class  ProductList(ListView):
     model =  Product
     paginate_by = 50
     
+    #show the products with quantity only
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     queryset = queryset.filter(queryset__gt=0)
+    #     return queryset
+    
+    
+
     
  # context{}, query set : Product.object.all():1 : option 2: method :override
  # query set : main query  : detail
