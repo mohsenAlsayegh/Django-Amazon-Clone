@@ -1,8 +1,7 @@
 
+ - out of stock : admin
+ -admin customization
 
-Users :
-    - out of stock : admin
-    -API: library :JWT
 
 
 Intermediate :
