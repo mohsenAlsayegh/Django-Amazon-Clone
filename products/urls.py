@@ -18,4 +18,5 @@ urlpatterns = [
     
     path('api/brands/', api.BrandListAPI.as_view()),
     path('api/brands/<int:pk>', api.BrandDetailAPI.as_view()),
+    
 ]

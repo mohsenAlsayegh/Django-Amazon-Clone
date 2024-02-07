@@ -1,8 +1,6 @@
 
  - out of stock : admin
- -admin customization
-
-
+ - admin customization
 
 Intermediate :
     -Translation
