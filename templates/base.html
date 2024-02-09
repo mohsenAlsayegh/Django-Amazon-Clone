@@ -1,6 +1,6 @@
 {% load static %}
 {% load i18n %}
-{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html lang="en" {% if LANGUAGE_CODE == 'ar' %} dir="rtl" {% endif %}>
     <head>
