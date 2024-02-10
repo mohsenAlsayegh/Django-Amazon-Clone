@@ -9,9 +9,22 @@ from django.db.models import Q , F, Value
 from django.db.models.aggregates import Count,Sum,Avg,Max,Min
 from django.views.decorators.cache import cache_page
 
+import time
+from .tasks import excute_code
 
-@cache_page(60 * 1)
 def mydebug(request):
+    
+    excute_code.delay()
+   
+    return render(request,'products/debug.html',{})
+    
+    
+    
+    
+    
+    
+# @cache_page(60 * 1)
+# def mydebug(request):
     # data = Product.objects.all()
     
     # column number -------
