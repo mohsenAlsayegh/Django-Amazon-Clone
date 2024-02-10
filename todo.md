@@ -1,18 +1,17 @@
 
  - out of stock : admin
  - admin customization
+ - app_name & brands translation
 
 Intermediate :
-    -Translation
-    - Docker
-    - Translation
-    - Translation
-    - Celery
-    - Redis
+    - Django Default Premession
+    
+    - JS    
     - Payment
     - Ajax
-    - Caching
     - Linting
     - Deploy
-    - Django Default Permission
-    - Django Default Permission
+    - SQL
+
+- Interview
+ - multiple type user
