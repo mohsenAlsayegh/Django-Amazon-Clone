@@ -4,14 +4,12 @@
  - app_name & brands translation
 
 Intermediate :
-    - Django Default Premession
-    
-    - JS    
+    - SQL
+    - JS   
+    - Ajax 
     - Payment
-    - Ajax
     - Linting
     - Deploy
-    - SQL
 
 - Interview
  - multiple type user
