@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts',
-    
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     
     # Packages
+    
     "taggit",
     'rest_framework',
     'django_filters',
@@ -241,6 +242,10 @@ EMAIL_HOST_USER = "muhsen91@googlemail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+#model translation 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 
 
